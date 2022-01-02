@@ -1,6 +1,7 @@
 ﻿using SistemaVentasBackCasa.Domain.IRespositories;
 using SistemaVentasBackCasa.Domain.IServices;
 using SistemaVentasBackCasa.Domain.Models;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace SistemaVentasBackCasa.Services
@@ -12,9 +13,25 @@ namespace SistemaVentasBackCasa.Services
         {
             _proveedorRepository = proveedorRepository;
         }
-        public async Task GuardarProveedor(Proveedor proveedor)
+        public async Task AgregarProveedor(Proveedor proveedor)
         {
-            await _proveedorRepository.GuardarProveedor(proveedor);
+            await _proveedorRepository.AgregarProveedor(proveedor);
+        }
+        public async Task<List<Proveedor>> ListarProveedor()
+        {
+            return await _proveedorRepository.ListarProveedor();
+        }
+        public async Task<Proveedor> ListarProveedorPorId(int idProveedor)
+        {
+            return await _proveedorRepository.ListarProveedorPorId(idProveedor);
+        }
+        public async Task EliminarProveedor(int idProveedor)
+        {
+            await _proveedorRepository.EliminarProveedor(idProveedor);
+        }
+        public async Task EditarProveedor(Proveedor proveedor)
+        {
+            await _proveedorRepository.EditarProveedor(proveedor);
         }
     }
 }
